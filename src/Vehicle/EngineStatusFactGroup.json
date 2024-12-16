@@ -1,0 +1,126 @@
+{
+    "version":  1,
+    "fileType": "FactMetaData",
+    "QGC.MetaData.Facts":
+[
+{
+    "name":             "engine_rpmFirst",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":	 0,
+    "default":           0
+},
+{
+    "name":             "engine_rpmSecond",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_rpmThird",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_rpmFourth",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_rpmFifth",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_rpmSixth",
+    "shortDesc":        "Rotation Per Minute",
+    "type":             "uint16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_stateFirst",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":	 0,
+    "default":          0
+},
+{
+    "name":             "engine_stateSecond",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_stateThird",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_stateFourth",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_stateFifth",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "engine_stateSixth",
+    "shortDesc":        "Engine Status",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "pos_sensor_left_roll",
+    "shortDesc":        "Left Roll Servo Pos",
+    "type":             "int16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "pos_sensor_right_roll",
+    "shortDesc":        "Right Roll Servo Pos",
+    "type":             "int16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "pos_sensor_left_pitch",
+    "shortDesc":        "Left Pitch Servo Pos",
+    "type":             "int16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "pos_sensor_right_pitch",
+    "shortDesc":        "Right Pitch Servo Pos",
+    "type":             "int16",
+    "decimalPlaces":    0,
+    "default":          0
+},
+{
+    "name":             "vehicle_oil",
+    "shortDesc":        "vehicle oil",
+    "type":             "uint8",
+    "decimalPlaces":    0,
+    "default":          0
+}
+]
+}

@@ -96,6 +96,7 @@ const char* Vehicle::_distanceToGCSFactName =       "distanceToGCS";
 const char* Vehicle::_hobbsFactName =               "hobbs";
 const char* Vehicle::_throttlePctFactName =         "throttlePct";
 
+const char* Vehicle::_engineStatusFactGroupName =       "engineStatus";
 const char* Vehicle::_gpsFactGroupName =                "gps";
 const char* Vehicle::_gps2FactGroupName =               "gps2";
 const char* Vehicle::_windFactGroupName =               "wind";
@@ -156,6 +157,7 @@ Vehicle::Vehicle(LinkInterface*             link,
     , _distanceToGCSFact            (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact                    (0, _hobbsFactName,             FactMetaData::valueTypeString)
     , _throttlePctFact              (0, _throttlePctFactName,       FactMetaData::valueTypeUint16)
+    , _engineStatusFactGroup        (this)
     , _gpsFactGroup                 (this)
     , _gps2FactGroup                (this)
     , _windFactGroup                (this)
@@ -310,6 +312,7 @@ Vehicle::Vehicle(MAV_AUTOPILOT              firmwareType,
     , _distanceToGCSFact                (0, _distanceToGCSFactName,     FactMetaData::valueTypeDouble)
     , _hobbsFact                        (0, _hobbsFactName,             FactMetaData::valueTypeString)
     , _throttlePctFact                  (0, _throttlePctFactName,       FactMetaData::valueTypeUint16)
+    , _engineStatusFactGroup            (this)
     , _gpsFactGroup                     (this)
     , _gps2FactGroup                    (this)
     , _windFactGroup                    (this)
@@ -436,6 +439,7 @@ void Vehicle::_commonInit()
     _hobbsFact.setRawValue(QVariant(QString("0000:00:00")));
     _addFact(&_hobbsFact,               _hobbsFactName);
 
+    _addFactGroup(&_engineStatusFactGroup,      _engineStatusFactGroupName);
     _addFactGroup(&_gpsFactGroup,               _gpsFactGroupName);
     _addFactGroup(&_gps2FactGroup,              _gps2FactGroupName);
     _addFactGroup(&_windFactGroup,              _windFactGroupName);
@@ -665,11 +669,16 @@ void Vehicle::_mavlinkMessageReceived(LinkInterface* link, mavlink_message_t mes
     }
 
     switch (message.msgid) {
+    case MAVLINK_MSG_ID_ENGINE_STATUS:
+//        _handleEngineStatus(message);
+        qDebug()<<"ENGINE_STATUS";
+        break;
     case MAVLINK_MSG_ID_HOME_POSITION:
         _handleHomePosition(message);
         break;
     case MAVLINK_MSG_ID_HEARTBEAT:
         _handleHeartbeat(message);
+        qDebug()<<"HEARTBEAT";
         break;
     case MAVLINK_MSG_ID_RADIO_STATUS:
         _handleRadioStatus(message);
@@ -1742,6 +1751,27 @@ void Vehicle::_handleHeartbeat(mavlink_message_t& message)
         }
     }
 }
+
+//void Vehicle::_handleEngineStatus(mavlink_message_t& message)
+//{
+//    mavlink_engine_status_t engine_status;
+//    mavlink_msg_engine_status_decode(&message, &engine_status);
+//    _engineStatusFactGroup.engine_stateFirst() ->setRawValue(engine_status.engine_state[0]);
+//    _engineStatusFactGroup.engine_stateSecond()->setRawValue(engine_status.engine_state[1]);
+//    _engineStatusFactGroup.engine_stateThird() ->setRawValue(engine_status.engine_state[2]);
+//    _engineStatusFactGroup.engine_stateFourth()->setRawValue(engine_status.engine_state[3]);
+//    _engineStatusFactGroup.engine_stateFifth() ->setRawValue(engine_status.engine_state[4]);
+//    _engineStatusFactGroup.engine_stateSixth() ->setRawValue(engine_status.engine_state[5]);
+
+//    _engineStatusFactGroup.engine_rpmFirst() ->setRawValue(engine_status.engine_rpm[0]);
+//    _engineStatusFactGroup.engine_rpmSecond()->setRawValue(engine_status.engine_rpm[1]);
+//    _engineStatusFactGroup.engine_rpmThird() ->setRawValue(engine_status.engine_rpm[2]);
+//    _engineStatusFactGroup.engine_rpmFourth()->setRawValue(engine_status.engine_rpm[3]);
+//    _engineStatusFactGroup.engine_rpmFifth() ->setRawValue(engine_status.engine_rpm[4]);
+//    _engineStatusFactGroup.engine_rpmSixth() ->setRawValue(engine_status.engine_rpm[5]);
+
+//    _engineStatusFactGroup.vehicle_oil()->setRawValue(engine_status.vehicle_oil);
+//}
 
 void Vehicle::_handleRadioStatus(mavlink_message_t& message)
 {

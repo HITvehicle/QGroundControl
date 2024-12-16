@@ -14,6 +14,8 @@ WindowsBuild {
     INCLUDEPATH += libs/msinttypes
 }
 
+INCLUDEPATH += libs/libevents/libevents/libs/cpp/parse/nlohmann_json/include
+
 #
 # [REQUIRED] Add support for the MAVLink communications protocol.
 #
